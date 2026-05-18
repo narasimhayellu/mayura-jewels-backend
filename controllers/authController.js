@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 
 const transporter = require("../config/emailConfig");
 const otpGenerator = require("otp-generator");
-const sendEmail = require("../config/mailer");
+const sendEmail = require("../config/emailConfig");
 
 const registerUser = async (req, res) => {
         console.log("REGISTER API HIT");
