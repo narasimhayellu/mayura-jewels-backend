@@ -10,15 +10,14 @@ const app = express();
 
 connectDb();
 
-const corsOptions = {
-    origin: "http://localhost:3000",
-    credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-};
-
-app.options("/{*path}", cors(corsOptions));
-app.use(cors(corsOptions));
+app.use(
+    cors({
+      origin: ["http://localhost:3000",
+        "https://mayura-jewels.netlify.app/"
+      ],
+      credentials: true,
+    })
+  );
 app.use(express.json());
 
 app.use("/api/auth", require("./routes/authRoutes"));
