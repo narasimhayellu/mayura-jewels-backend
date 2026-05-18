@@ -13,7 +13,7 @@ connectDb();
 app.use(
     cors({
       origin: ["http://localhost:3000",
-        "https://mayura-jewels.netlify.app/"
+        "https://mayura-jewels.netlify.app"
       ],
       credentials: true,
     })
