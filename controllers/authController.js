@@ -4,6 +4,7 @@ const jwt = require("jsonwebtoken");
 
 const transporter = require("../config/emailConfig");
 const otpGenerator = require("otp-generator");
+const sendEmail = require("../config/mailer");
 
 const registerUser = async (req, res) => {
         console.log("REGISTER API HIT");
@@ -63,17 +64,11 @@ const registerUser = async (req, res) => {
 
         await user.save();
 
-        await transporter.sendMail({
-            from: process.env.EMAIL_USER,
+        await sendEmail({
             to: user.email,
-            subject: "OTP Verification",
-            html: `
-              <h2>Your OTP Code</h2>
-              <p>Your OTP is:</p>
-              <h1>${otp}</h1>
-              <p>This OTP expires in 5 minutes.</p>
-            `,
-          });
+            subject: "Your OTP - Mayura Jewels",
+            html: `<p>Your OTP is: <b>${otp}</b></p><p>Valid for 10 minutes.</p>`
+        });
 
         res.status(201).json({
             success: true,

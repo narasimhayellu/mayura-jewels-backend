@@ -1,27 +1,27 @@
-const nodemailer = require("nodemailer");
+const { Resend } = require("resend");
 
-const transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 587,
-    secure: false, // ✅ use STARTTLS not SSL
-    auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-    },
-    tls: {
-        rejectUnauthorized: false
-    },
-    connectionTimeout: 10000,
-    greetingTimeout: 10000,
-    socketTimeout: 10000,
-});
+const resend = new Resend(process.env.RESEND_API_KEY);
 
-transporter.verify((error, success) => {
-    if (error) {
-        console.log("SMTP ERROR:", error);
-    } else {
-        console.log("Email server ready");
+const sendEmail = async ({ to, subject, html }) => {
+    try {
+        const { data, error } = await resend.emails.send({
+            from: "Mayura Jewels <onboarding@resend.dev>",
+            to,
+            subject,
+            html,
+        });
+
+        if (error) {
+            console.log("Email error:", error);
+            return false;
+        }
+
+        console.log("Email sent:", data);
+        return true;
+    } catch (err) {
+        console.log("Send error:", err);
+        return false;
     }
-});
+};
 
-module.exports = transporter;
+module.exports = sendEmail;
