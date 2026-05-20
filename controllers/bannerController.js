@@ -135,5 +135,4 @@ module.exports = {
   createBanner,
   updateBanner,
   deleteBanner,
-  addBanner
 };
