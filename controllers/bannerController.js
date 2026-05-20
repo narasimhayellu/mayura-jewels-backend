@@ -88,9 +88,13 @@ const createBanner = async (req, res) => {
 
 const updateBanner = async (req, res) => {
   try {
+    const { id } = req.params;
+
     const { title, status } = req.body;
 
-    const banner = await Banner.findById(req.params.id);
+    const banner = banners.find(
+        (item) => item.id === parseInt(id)
+      );
 
     if (!banner) {
       return res.status(404).json({
@@ -107,11 +111,10 @@ const updateBanner = async (req, res) => {
       banner.image = req.file.path;
     }
 
-    await banner.save();
-
     res.status(200).json({
       success: true,
       banner,
+      message: "Banner updated successfully",
     });
   } catch (error) {
     console.log(error);
