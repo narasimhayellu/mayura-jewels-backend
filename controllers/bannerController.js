@@ -11,7 +11,7 @@ const getBanner = async(req,res)=>{
             },
             {
               image:
-                "https://wallpapers.com/images/hd/jewellery-background-1920-x-1200-v2f7plnck08zqeh8.jpg",
+                "https://images.bhimagold.com/admin/category/images/1778164361203-earrings-1200x600.jpg",
             },
           ];
 
