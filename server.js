@@ -20,6 +20,10 @@ app.use(
   );
 app.use(express.json());
 
+app.use("/uploads", express.static("uploads"));
+
+app.use("/api", require("./routes/bannerRoutes"));
+
 app.use("/api/auth", require("./routes/authRoutes"));
 
 app.use(
