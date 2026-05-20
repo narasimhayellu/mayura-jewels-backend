@@ -3,7 +3,7 @@ const getBanner = async(req,res)=>{
         const banners = [
             {
               image:
-                "https://5.imimg.com/data5/SELLER/Default/2022/7/NY/YT/TP/1621291/jewellery-photography-500x500.jpg",
+                "https://i.ytimg.com/vi/3x6x9eXmj3U/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDokbTFAVwb9lituX8sSZ4D2wOQwg",
             },
             {
               image:
