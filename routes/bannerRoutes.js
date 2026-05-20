@@ -10,11 +10,14 @@ const {
   createBanner,
   updateBanner,
   deleteBanner,
+  addBanner
 } = require("../controllers/bannerController");
 
 router.get("/banners", getBanners);
 
 router.get("/banners/:id", getSingleBanner);
+
+router.post("/banners", addBanner);
 
 router.post(
   "/banners",

@@ -1,3 +1,5 @@
+
+
 const Banner = require("../models/bannerModel");
 
 const getBanners = async (req, res) => {
@@ -39,6 +41,27 @@ const getSingleBanner = async (req, res) => {
     });
   }
 };
+
+const addBanner = async (req, res) => {
+    try {
+      const banner = await Banner.create({
+        title: req.body.title,
+        image: req.body.image,
+        status: true,
+      });
+  
+      res.status(201).json({
+        success: true,
+        banner,
+      });
+    } catch (error) {
+      console.log(error);
+  
+      res.status(500).json({
+        message: "Server Error",
+      });
+    }
+  };
 
 const createBanner = async (req, res) => {
   try {
@@ -130,4 +153,5 @@ module.exports = {
   createBanner,
   updateBanner,
   deleteBanner,
+  addBanner
 };
